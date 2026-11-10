@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101827" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>GAREA Remote</title>
+</head>
+<body>
+  <header class="top"><div><div class="eyebrow">PRIVATE DEVICE DASHBOARD</div><h1>GAREA Remote</h1></div><span id="connection" class="pill">Disconnected</span></header>
+  <main>
+    <section class="panel" id="pairPanel"><h2>Connect your PC</h2><p>Enter the pairing PIN configured in <code>desktop-agent/.env</code>.</p><form id="pairForm"><input id="pin" type="password" autocomplete="current-password" placeholder="Pairing PIN" required /><button>Connect</button></form><p id="pairMessage" class="message"></p></section>
+    <section id="dashboard" hidden>
+      <section class="stats">
+        <article class="panel"><span>CPU</span><strong id="cpu">—</strong></article>
+        <article class="panel"><span>Memory</span><strong id="memory">—</strong></article>
+        <article class="panel"><span>Disk</span><strong id="disk">—</strong></article>
+      </section>
+      <section class="panel"><div class="section-head"><div><h2>PC screen</h2><p id="screenInfo">Snapshot view · refresh to update</p></div><button class="secondary" id="refreshScreen">Refresh</button></div><div class="screen-wrap"><img id="screen" alt="PC screen snapshot" /></div><div class="screen-actions"><label>Tap the screenshot to click on the PC screen</label><span id="controlState" class="muted">Control disabled</span></div></section>
+      <section class="panel"><h2>Type text</h2><textarea id="typeText" rows="3" placeholder="Text to type on the PC..."></textarea><button id="sendText">Send text to PC</button></section>
+      <section class="panel"><h2>GAREA AI Factory</h2><p id="factoryStatus">Checking project folder…</p><p class="muted">This starter only checks whether the folder exists. It does not start paid generation.</p></section>
+      <button class="danger" id="disconnect">Disconnect this browser</button>
+    </section>
+    <p id="notice" class="message" role="status"></p>
+    <footer>Use only on devices you own. Do not expose this service to the public internet.</footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
